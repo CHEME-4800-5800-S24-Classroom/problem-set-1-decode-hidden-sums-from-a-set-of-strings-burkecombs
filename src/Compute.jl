@@ -21,6 +21,8 @@ function decode_part_1(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, D
     return (total, codes);
 end
 
+# Burke Combs was here
+
 """
     decode_part_2(models::Dict{Int64, MyPuzzleRecordModel}) -> Tuple{Int64, Dict{Int64, Int64}}
 
