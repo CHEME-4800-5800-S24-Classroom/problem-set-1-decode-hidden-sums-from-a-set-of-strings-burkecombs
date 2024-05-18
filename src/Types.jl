@@ -10,11 +10,11 @@ A model for the puzzle records. The constructor takes a single argument, the rec
 """
 mutable struct MyPuzzleRecordModel
 
-    # data -
+    # data types
     record::String
     characters::Array{Char, 1}
     len::Int64
 
-    # constructor -
+    # constructor
     MyPuzzleRecordModel(record::String) = new(record, collect(record), length(record));
 end
