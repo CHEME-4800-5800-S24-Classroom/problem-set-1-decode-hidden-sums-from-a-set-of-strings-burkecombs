@@ -90,7 +90,7 @@ function decode_part_1(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, D
 end
 
 """
-    decode_part_2(models::Dict{Int64, MyPuzzleRecordModel}) -> Tuple{Int64, Dict{Int64, Int64}}
+    decode_part_2(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, Dict{Int64, Int64}}
 
 Decodes the records using the rules for part 2 of the puzzle, i.e. the hidden value of each record is the first and last digits in the record, but the digits can also be in word form.
 
