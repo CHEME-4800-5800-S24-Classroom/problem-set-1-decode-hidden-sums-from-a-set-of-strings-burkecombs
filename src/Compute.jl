@@ -1,7 +1,7 @@
 # ===== PRIVATE METHODS BELOW HERE =================================================================================== #
 function _decode_part_1(model::MyPuzzleRecordModel)::Int64
      
-    # In this line, the characters are retrieved
+    # for this line, get the characters -
     characters = model.characters;
     digits = filter(isnumeric, characters);
     value = Array{Char, 1}();
@@ -16,7 +16,7 @@ function _decode_part_1(model::MyPuzzleRecordModel)::Int64
     push!(value, digits[end]);
 
 
-    # Now, we join the characters and parse the values
+    # join the characters and parse the value -
     return value |> join |> x-> parse(Int64, x);
 end
 
@@ -61,7 +61,13 @@ end
 """
     decode_part_1(models::Dict{Int64, MyPuzzleRecordModel}) -> Tuple{Int64, Dict{Int64, Int64}}
 
-TODO: Add documentation
+Decodes the records using the rules for part 1 of the puzzle, i.e. the hidden value of each record is the first and last digits in the record.
+
+### Arguments
+- `models::Dict{Int64, MyPuzzleRecordModel}`: A dictionary of MyPuzzleRecordModel objects, where the key is the record number and the value is the MyPuzzleRecordModel object.
+
+### Returns
+- A tuple with two elements.  The first element is the total of all the decoded values.  The second element is a dictionary of the decoded values, where the key is the record number and the value is the decoded value for that record.
 """
 function decode_part_1(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, Dict{Int64, Int64}}
     
@@ -69,19 +75,30 @@ function decode_part_1(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, D
     total = 0;
     codes = Dict{Int64, Int64}();
     
-    # TODO: Add the logic for part 1 here
-    # ...
+    # main -
+    for (key, value) ∈ models
+        
+        # decode the value -
+        codes[key] = _decode_part_1(value);
+
+        # total the value -
+        total += codes[key];
+    end
     
     # return the total -
     return (total, codes);
 end
 
-# Burke Combs was here
-
 """
     decode_part_2(models::Dict{Int64, MyPuzzleRecordModel}) -> Tuple{Int64, Dict{Int64, Int64}}
 
-TODO: Add documentation
+Decodes the records using the rules for part 2 of the puzzle, i.e. the hidden value of each record is the first and last digits in the record, but the digits can also be in word form.
+
+### Arguments
+- `models::Dict{Int64, MyPuzzleRecordModel}`: A dictionary of MyPuzzleRecordModel objects, where the key is the record number and the value is the MyPuzzleRecordModel object.
+
+### Returns
+- A tuple with two elements.  The first element is the total of all the decoded values.  The second element is a dictionary of the decoded values, where the key is the record number and the value is the decoded value for that record.
 """
 function decode_part_2(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, Dict{Int64, Int64}}
      
@@ -89,8 +106,15 @@ function decode_part_2(models::Dict{Int64, MyPuzzleRecordModel})::Tuple{Int64, D
     total = 0;
     codes = Dict{Int64, Int64}();
      
-    # TODO: Add the logic for part 2 here
-    # ...
+    # main -
+    for (key, value) ∈ models
+         
+         # decode the value -
+         codes[key] = _decode_part_2(value);
+ 
+         # total the value -
+         total += codes[key];
+    end
      
      # return the total -
      return (total, codes);
